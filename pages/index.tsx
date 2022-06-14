@@ -3,9 +3,16 @@ import Button from '../components/Button/Button'
 
 const Home: NextPage = () => {
   return <>
-  Hello
+ <h1> Hello</h1>
 
-  <Button/>
+  <Button 
+  href='qw'
+  text='login'
+  
+
+
+
+    />
   
   </>
 
