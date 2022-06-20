@@ -6,7 +6,7 @@ const Home: NextPage = () => {
  <h1> Hello</h1>
 
   <Button 
-  href='qw'
+  href='/'
   text='login'
   
 

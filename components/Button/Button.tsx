@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import tokens from './tokens'
 
+
 interface ButtonProps {
   href: string,
   onClick?: any,
@@ -15,17 +16,28 @@ interface ButtonProps {
   iconPosition?: 'before' | 'after' | 'arrow'
 }
 
+
+
 const Container = styled.div`
-display:flex;
+display: flex;
+height: 54px;
+width: 210px;
+`
+
+const Style = styled.a`
+position: relative;
+display: inline-flex;
+align-items: center;
+justify-content:center;
+color:white;
+height:100%;
+width:100%;
 background: ${tokens.primaryColorNormal};
-height: 40px;
-text-align:center;
-height:54px;
-width:210px;
 border-radius:8px;
 font-family:${tokens.primaryFont};
 font-size:18px;
 transition:${tokens.$tr};
+
 &:hover {
   background:${tokens.primaryColorHover}
 }
@@ -34,18 +46,11 @@ transition:${tokens.$tr};
   border: 3px solid ${tokens.primaryColorBorder}
 }
 `
-
-const Style = styled.a`
-  color:white;
-  height:100%;
-  width:100%;
-`
 const StyleButton = styled.b`
   color:white;
   background:red;
   height:100%;
   width:100%;
-
 `
 
 export default function Button({
