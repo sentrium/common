@@ -29,19 +29,24 @@ export default function Button({
       ? <>
         {text}
         {icon &&
-          <Image
-            src={icon}
-            alt={text}
-            title={text} />
+          <span className='spanImg'>
+            <Image
+              src={icon}
+              alt={text}
+              title={text} />
+          </span>
+
         }
       </>
       : iconPosition === 'before'
         ? <>
           {icon &&
-            <Image
-              src={icon}
-              alt={text}
-              title={text} />
+            <span className='spanImg'>
+              <Image
+                src={icon}
+                alt={text}
+                title={text} />
+            </span>
           }
           {text}
         </>
