@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import Button from '../components/Button'
+import Btn from '../components/Btn'
 
 const Home: NextPage = () => {
   return <>
     <h1> Hello</h1>
 
-    <Button
+    <Btn
       href='/'
       text='login'
       className=''
