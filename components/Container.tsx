@@ -1,17 +1,13 @@
 import s from './Container.module.sass'
+
 interface Props {
   children: any,
-  size?: 'big' | 'middle' | 'small'
+  className?: 'container--big' | 'container--middle' | 'container--small'
 }
 
-export default function Container({ children, size = 'big' }: Props) {
+export default function Container({ children, className='container--big' }: Props) {
 
-  return <div className={`
-    ${s.container}
-    ${size === 'big' ? s.big : ''}
-    ${size === 'middle' ? s.middle : ''}
-    ${size === 'small' ? s.small : ''}
-  `}>
+  return <div className={className}>
     {children}
   </div>
 }
