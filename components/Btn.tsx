@@ -6,7 +6,7 @@ interface ButtonProps {
   href: string,
   onClick?: any,
   text?: string,
-  icon?: string | null,
+  icon?: any,
   iconPosition?: 'before' | 'after'
   className: string
 }
@@ -29,11 +29,8 @@ export default function Button({
       ? <>
         {text}
         {icon &&
-          <span className='spanImg'>
-            <Image
-              src={icon}
-              alt={text}
-              title={text} />
+          <span className='spanImg icon-after'>
+            {icon}
           </span>
 
         }
@@ -41,11 +38,8 @@ export default function Button({
       : iconPosition === 'before'
         ? <>
           {icon &&
-            <span className='spanImg'>
-              <Image
-                src={icon}
-                alt={text}
-                title={text} />
+            <span className='spanImg icon-before'>
+              {icon}
             </span>
           }
           {text}
