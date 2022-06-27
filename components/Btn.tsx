@@ -1,19 +1,14 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 interface ButtonProps {
-  href: string,
-  onClick?: any,
-  text?: string,
-  icon?: any,
+  href?: string
+  onClick?: any
+  text?: string
+  icon?: any
   iconPosition?: 'before' | 'after'
-  className: string
+  className: string;
 }
-
-// color?: 'primary' | 'secondary' | 'blue'|navigation,
-// size?: 'small' | 'medium' | 'big' | 'huge',
-// style?: 'fill' | 'outline' | 'transparent',
 
 export default function Button({
   onClick,
@@ -21,40 +16,28 @@ export default function Button({
   text,
   className,
   icon = null,
-  iconPosition = 'before'
+  iconPosition = 'before',
 }: ButtonProps) {
 
-  const buttonContent = () => (
-    iconPosition === 'after'
-      ? <>
-        {text}
-        {icon &&
-          <span className='spanImg icon-after'>
-            {icon}
-          </span>
-
-        }
-      </>
-      : iconPosition === 'before'
-        ? <>
-          {icon &&
-            <span className='spanImg icon-before'>
-              {icon}
-            </span>
-          }
-          {text}
-        </>
-        : <>
-          {text}
-        </>
-  )
+  const buttonContent = () => <>
+    {iconPosition === 'before' && icon &&
+      <span className='spanImg icon-before'>
+        {icon}
+      </span>
+    }
+    {text}
+    {iconPosition === 'after' && icon &&
+      <span className='spanImg icon-after'>
+        {icon}
+      </span>
+    }
+  </>
 
   const hrefStart: string = href[0]
 
   let type: string = ''
 
   switch (hrefStart) {
-
     case 'h':
       type = 'external'
       break
@@ -65,7 +48,7 @@ export default function Button({
 
     case '#':
       type = 'anchor'
-      break
+      break;
 
     case '':
       type = 'submit'
@@ -80,56 +63,42 @@ export default function Button({
   }
 
   return <>
-
-    {type === 'internal'
-
+    {type === 'internal' && href
       ? <Link href={href}>
         <a className={className}>
           {buttonContent()}
         </a>
       </Link>
-
-      : type === 'external'
-
+      : type === 'external' && href
         ? <a
           href={href}
           rel='noreferrer'
           target='_blank'
           className={className}
-          onClick={onClick}
         >
           {buttonContent()}
         </a>
-
-        : type === 'anchor'
-
+        : type === 'anchor' && href
           ? <AnchorLink
             href={href}
             className={className}
-            onClick={onClick}
           >
             {buttonContent()}
           </AnchorLink>
-
-          : type === 'popup'
-
+          : type === 'popup' && onClick
             ? <button
               className={className}
               onClick={onClick}
             >
               {buttonContent()}
             </button>
-
-            : <button
+            :
+            <button
               type='submit'
-              onClick={onClick}
               className={className}
             >
               {buttonContent()}
             </button>
-
     }
-
-
   </>
 }
