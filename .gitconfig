@@ -1,0 +1,4 @@
+# run the following command to make this .gitconfig file work:
+# git config --local include.path ../.gitconfig
+[core]
+	ignorecase = false
