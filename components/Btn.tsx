@@ -7,7 +7,8 @@ interface ButtonProps {
   text?: string
   icon?: any
   iconPosition?: 'before' | 'after'
-  className: string;
+  disabled?: boolean
+  className: string
 }
 
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
   text,
   className,
   icon = null,
+  disabled = false,
   iconPosition = 'before',
 }: ButtonProps) {
 
@@ -64,38 +66,31 @@ export default function Button({
 
   return <>
     {type === 'internal' && href
-      ? <Link href={href}>
-        <a className={className}>
+      ? <Link {...{ href }}>
+        <a {...{ disabled, className }}>
           {buttonContent()}
         </a>
       </Link>
       : type === 'external' && href
         ? <a
-          href={href}
           rel='noreferrer'
           target='_blank'
-          className={className}
+          {...{ href, disabled, className }}
         >
           {buttonContent()}
         </a>
         : type === 'anchor' && href
-          ? <AnchorLink
-            href={href}
-            className={className}
-          >
+          ? <AnchorLink {...{ href, disabled, className }}>
             {buttonContent()}
           </AnchorLink>
           : type === 'popup' && onClick
-            ? <button
-              className={className}
-              onClick={onClick}
-            >
+            ? <button {...{ onClick, disabled, className }}>
               {buttonContent()}
             </button>
             :
             <button
               type='submit'
-              className={className}
+              {...{ disabled, className }}
             >
               {buttonContent()}
             </button>
