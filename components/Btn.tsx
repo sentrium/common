@@ -7,7 +7,8 @@ interface ButtonProps {
   text?: string
   icon?: any
   iconPosition?: 'before' | 'after'
-  className: string;
+  className: string
+  disabled?: any
 }
 
 export default function Button({
