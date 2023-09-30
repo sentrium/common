@@ -65,12 +65,18 @@ export default function Button({
 
   return <>
     {type === 'internal' && href
-      ? <Link href={href}>
-        <a className={className}>
-          {buttonContent()}
-        </a>
+
+      ? <Link
+        {...{
+          href,
+          className
+        }}
+      >
+        {buttonContent()}
       </Link>
+
       : type === 'external' && href
+      
         ? <a
           href={href}
           rel='noreferrer'
@@ -79,27 +85,32 @@ export default function Button({
         >
           {buttonContent()}
         </a>
+
         : type === 'anchor' && href
+
           ? <AnchorLink
             href={href}
             className={className}
           >
             {buttonContent()}
           </AnchorLink>
+
           : type === 'popup' && onClick
+
             ? <button
               className={className}
               onClick={onClick}
             >
               {buttonContent()}
             </button>
-            :
-            <button
+
+            : <button
               type='submit'
               className={className}
             >
               {buttonContent()}
             </button>
+
     }
   </>
 }
