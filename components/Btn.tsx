@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 interface ButtonProps {
   href?: string
@@ -76,37 +75,45 @@ export default function Button({
       </Link>
 
       : type === 'external' && href
-      
+
         ? <a
-          href={href}
           rel='noreferrer'
           target='_blank'
-          className={className}
+          {...{
+            href,
+            className
+          }}
         >
           {buttonContent()}
         </a>
 
         : type === 'anchor' && href
 
-          ? <AnchorLink
-            href={href}
-            className={className}
+          ? <a
+            {...{
+              href,
+              className
+            }}
           >
             {buttonContent()}
-          </AnchorLink>
+          </a>
 
           : type === 'popup' && onClick
 
             ? <button
-              className={className}
-              onClick={onClick}
+              {...{
+                onClick,
+                className
+              }}
             >
               {buttonContent()}
             </button>
 
             : <button
               type='submit'
-              className={className}
+              {...{
+                className
+              }}
             >
               {buttonContent()}
             </button>
